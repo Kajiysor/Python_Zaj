@@ -1,7 +1,5 @@
 import random
 
-num = "12"
-
 one_num = random.sample(range(1, 10), 3)
 two_num = random.sample(range(1, 100), 3)
 three_num = random.sample(range(1, 1000), 3)
