@@ -98,9 +98,3 @@ def diff_poly(poly: list) -> list:
     poly.reverse()
     return [poly[i] * i for i in range(1, len(poly))]
 
-# p1 = [2, 1]                   # W(x) = 2 + x
-# p2 = [2, 1, 0]                # jw  (niejednoznaczność)
-# p3 = [-3, 0, 1]               # W(x) = -3 + x^2
-# p4 = [3]                      # W(x) = 3, wielomian zerowego stopnia
-# p5 = [0]                      # zero
-# p6 = [0, 0, 0]                # zero (niejednoznaczność)
