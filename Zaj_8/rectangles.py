@@ -10,12 +10,17 @@ class Rectangle:
         self.pt2 = Point(x2, y2)
 
     @classmethod
-    def from_points(cls, pt1: Point, pt2: Point) -> Rectangle:
-        if not (isinstance(pt1, Point) and isinstance(pt2, Point)):
-            raise TypeError("pt1 and pt2 must be Point")
-        return cls(pt1.x, pt1.y, pt2.x, pt2.y)
+    def from_points(cls, points) -> Rectangle:
+        if not isinstance(points, (list, tuple)):
+            raise TypeError("Points must either be a list or a tuple")
+        if not all(isinstance(point, Point) for point in points):
+            raise TypeError("points must be a list of Points")
+        if len(points) != 2:
+            raise ValueError("There must be 2 points to create a rectangle")
+        return cls(points[0].x, points[0].y, points[1].x, points[1].y)
 
-    def __str__(self) -> str:                               # "[(x1, y1), (x2, y2)]"
+    # "[(x1, y1), (x2, y2)]"
+    def __str__(self) -> str:
         return f'[{self.pt1}, {self.pt2}]'
 
     def __repr__(self) -> str:                              # "Rectangle(x1, y1, x2, y2)"
@@ -42,19 +47,19 @@ class Rectangle:
     @property
     def bottom(self) -> float:
         return self.pt1.y
-    
+
     @property
     def left(self) -> float:
         return self.pt1.x
-    
+
     @property
     def right(self) -> float:
         return self.pt2.x
-    
+
     @property
     def width(self) -> float:
         return abs(self.pt2.x - self.pt1.x)
-    
+
     @property
     def height(self) -> float:
         return abs(self.pt2.y - self.pt1.y)
@@ -101,4 +106,3 @@ class Rectangle:
             Rectangle(self.center().x, self.pt1.y,
                       self.pt2.x, self.center().y),
             Rectangle(self.pt1.x, self.pt1.y, self.center().x, self.center().y))
-

@@ -2,12 +2,12 @@ import rectangles as rect
 
 
 def test_from_points():
-    assert str(rect.Rectangle.from_points(rect.Point(
-        1, 2), rect.Point(3, 4))) == '[(1, 2), (3, 4)]'
-    assert str(rect.Rectangle.from_points(rect.Point(
-        3, 4), rect.Point(1, 2))) == '[(3, 4), (1, 2)]'
-    assert str(rect.Rectangle.from_points(rect.Point(
-        1, 2), rect.Point(1, 2))) == '[(1, 2), (1, 2)]'
+    assert str(rect.Rectangle.from_points(
+        [rect.Point(1, 2), rect.Point(3, 4)])) == '[(1, 2), (3, 4)]'
+    assert repr(rect.Rectangle.from_points(
+        (rect.Point(1, 2), rect.Point(3, 4)))) == 'Rectangle(1, 2, 3, 4)'
+    assert rect.Rectangle.from_points(
+        (rect.Point(1, 2), rect.Point(3, 4))) == rect.Rectangle(1, 2, 3, 4)
 
 
 def test_properties():
