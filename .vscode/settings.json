@@ -1,0 +1,9 @@
+{
+    "python.formatting.autopep8Args": [
+        "--max-line-length",
+        "79",
+        "--indent-size",
+        "4",
+        "--aggressive"
+    ]
+} 
