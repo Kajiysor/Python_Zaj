@@ -43,6 +43,8 @@ class TestSingleList(unittest.TestCase):
         self.assertEqual(lista.head, None)
         self.assertEqual(lista.tail, None)
         self.assertEqual(lista.length, 0)
+        with self.assertRaises(ValueError):
+            lista.remove_head()
 
     def test_remove_tail(self):
         lista = SingleList()
@@ -58,6 +60,8 @@ class TestSingleList(unittest.TestCase):
         self.assertEqual(lista.head, None)
         self.assertEqual(lista.tail, None)
         self.assertEqual(lista.length, 0)
+        with self.assertRaises(ValueError):
+            lista.remove_tail()
 
     def test_join(self):
         lista1 = SingleList()

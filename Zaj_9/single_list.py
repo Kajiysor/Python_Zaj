@@ -56,7 +56,7 @@ class SingleList:
         # Zwraca cały węzeł, skraca listę.
         # Dla pustej listy rzuca wyjątek ValueError.
         if self.is_empty():
-            raise ValueError("Empty List")
+            raise ValueError("pusta lista")
         node = self.tail
         if self.head == self.tail:   # self.length == 1
             self.head = self.tail = None
