@@ -2,28 +2,34 @@ import random
 
 
 class RandomQueue:
-
     def __init__(self, size=10):
-        self.items = []
         self.size = size
+        self.queue = []
 
-    def insert(self, item):   # insert element in O(1)
+    def insert(self, element):
         if self.is_full():
             raise ValueError("Queue is full")
-        else:
-            self.items.append(item)
 
-    def remove(self):  # return random element in O(1)
+        self.queue.append(element)
+
+    def remove(self):
         if self.is_empty():
             raise ValueError("Queue is empty")
-        else:
-            return self.items.pop(random.randint(0, len(self.items) - 1))
+
+        # Select a random element from the queue
+        index = random.randint(0, len(self.queue) - 1)
+
+        # Swap the selected element with the last element in the queue
+        self.queue[index], self.queue[-1] = self.queue[-1], self.queue[index]
+
+        # Remove the last element from the queue
+        return self.queue.pop()
 
     def is_empty(self):
-        return len(self.items) == 0
+        return len(self.queue) == 0
 
     def is_full(self):
-        return len(self.items) == self.size
+        return len(self.queue) == self.size
 
-    def clear(self):  # clear the queue
-        self.items = []
+    def clear(self):
+        self.queue = []
